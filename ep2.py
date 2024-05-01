@@ -390,3 +390,47 @@ for i in range(len(lista_tropas_pais_j)):
     lista_tropas_pais_j.pop(0)
     lista_nbloco_tropa_pais_j.pop(0)
 
+    #Da-se início ao jogo
+import time
+print("Iniciando a batalha naval!")
+
+time.sleep(1)
+print("5")
+time.sleep(1)
+print("4")
+time.sleep(1)
+print("3")
+time.sleep(1)
+print("2")
+time.sleep(1)
+print("1")
+
+#Cria-se uma variável que indica se o jogo acabou ou não, ou seja, se há, ainda, navios em algum dos mapas
+acabou = False
+
+#Cria-se um loop para seguir com o jogo até que todos os navios, de algum dos jogadores, jogador e computador, sejam afundados
+while not acabou:
+    #Printa-se os mapas, do computador visível para o jogador, e do jogador
+    print(print_mapa(mapa_c, mapa_j))
+
+    #pergunta-se quais as coordenadas do tiro do jogador
+    foi = False
+    print('Coordenadas do disparo:')
+
+    while not foi:
+
+        coluna = input("Informe a Letra:")
+        if coluna not in ALFABETO and coluna not in ALFABETO.lower():
+            print('Coluna Inválida! Tente Novamente')
+            continue
+
+
+        coluna_i = ALFABETO.index(coluna.upper())  
+
+        linha = int(input("Informe a Linha:")) - 1
+        if linha not in [0, 1, 2, 3, 4,5, 6, 7, 8, 9,]:
+            print('Linha Inválida! Tente Novamente')
+            continue
+
+        foi = True
+
