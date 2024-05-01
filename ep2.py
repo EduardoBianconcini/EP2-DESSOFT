@@ -268,3 +268,62 @@ print(
 f'Você escolheu a nação {escolhido}'
 "\nAgora é a sua vez de alocar seus navios de guerra!"
 )
+
+#Cria-se os mapas utilizados no jogo, o do computador, o do computador visível para o jogador, e o do jogador
+mapa_c = cria_mapa(10)
+mapa_c_real = cria_mapa(10)
+mapa_j = cria_mapa(10)
+
+#Printa-se o tabuleiro
+print(
+f"  COMPUTADOR - {computador}                   JOGADOR - {escolhido}                  "
+"\n   A  B  C  D  E  F  G  H  I  J            A  B  C  D  E  F  G  H  I  J   ")
+
+for b in range(10):
+    linha_c = '  '.join(mapa_c[b])
+    linha_j = '  '.join(mapa_j[b])
+
+    n_linha = f"{b+1:2}" 
+    print(f"{n_linha} {linha_c} {n_linha}      {n_linha} {linha_j} {n_linha}")
+
+print ("   A  B  C  D  E  F  G  H  I  J            A  B  C  D  E  F  G  H  I  J   ")
+
+#Cria-se as listas que serão usadas para demonstração das peças que devem ser alocadas pelo jogador
+lista_tropas_pais_j = []
+lista_nbloco_tropa_pais_j = []
+
+lista_tropas_pais_c = []
+lista_nbloco_tropa_pais_c = []
+
+#Cria-se dois loops para preencher as listas corretamente para uso
+#Aqui aloca-se as tropas na lista, levando em consideração a sua quantidade 
+#Aloca-se, com mesmo índice, o número de blocos que cada tropa ocupa, para a sua devida alocação
+for tropa, qnt in PAISES[escolhido].items():
+    if qnt == 1:
+        lista_tropas_pais_j.append(tropa)
+        lista_nbloco_tropa_pais_j.append(CONFIGURACAO[tropa])
+    
+    elif qnt == 2:
+        for i in range(2):
+            lista_tropas_pais_j.append(tropa)
+            lista_nbloco_tropa_pais_j.append(CONFIGURACAO[tropa])
+
+    elif qnt == 3:
+        for i in range(3):
+            lista_tropas_pais_j.append(tropa)
+            lista_nbloco_tropa_pais_j.append(CONFIGURACAO[tropa])
+
+for tropa, qnt in PAISES[computador].items():
+    if qnt == 1:
+        lista_tropas_pais_c.append(tropa)
+        lista_nbloco_tropa_pais_c.append(CONFIGURACAO[tropa])
+    
+    elif qnt == 2:
+        for i in range(2):
+            lista_tropas_pais_c.append(tropa)
+            lista_nbloco_tropa_pais_c.append(CONFIGURACAO[tropa])
+
+    elif qnt == 3:
+        for i in range(3):
+            lista_tropas_pais_c.append(tropa)
+            lista_nbloco_tropa_pais_c.append(CONFIGURACAO[tropa])
