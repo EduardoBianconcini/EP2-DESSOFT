@@ -434,3 +434,24 @@ while not acabou:
 
         foi = True
 
+    #Escolhe-se, aleatoriamente, as coordenadas do tiro do computador
+    coluna_comp = random.choice(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'])
+    coluna_comp_i = ALFABETO.index(coluna_comp.upper()) 
+    linha_comp = random.choice([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+    #Verifica-se se as coordenadas escolhidas aleatoriamente já foram escolhidas anteriormente
+    #Gera-se novas coordenadas
+    if mapa_j[coluna_comp_i][linha_comp] == 'X' or mapa_j[coluna_comp_i][linha_comp] == 'A':
+        coluna_comp = random.choice(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'])
+        coluna_comp_i = ALFABETO.index(coluna_comp.upper()) 
+        linha_comp = random.choice([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+
+    #Modifica-se os mapas, se o tiro acertou ou não
+    tiro_jogador = tiro(mapa_c_real, linha, coluna_i)
+
+    tiro_comp = tiro(mapa_j, linha_comp, coluna_comp_i)
+
+    #Substitui-se no mapa visível para o jogador, se o tiro acertou ou não algum navio
+    substitui_para_mapa(mapa_c, linha, coluna_i, tiro_jogador)
+
