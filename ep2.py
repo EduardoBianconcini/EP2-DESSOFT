@@ -327,3 +327,66 @@ for tropa, qnt in PAISES[computador].items():
         for i in range(3):
             lista_tropas_pais_c.append(tropa)
             lista_nbloco_tropa_pais_c.append(CONFIGURACAO[tropa])
+
+
+#Cria-se um loop para a alocação das peças no tabuleiro do jogador
+#Printa-se a peça a ser alocada, e o número de blocos que esta ocupa
+#Printa-se as próximas peças a serem alocadas pelo jogador
+#Pergunta-se qual a posição, no mapa, para alocar-se a peça
+#Verifica-se se a posição escolhida é suportada no mapa
+#Posiciona-se a peça
+#Printa-se o mapa com a peça alocada
+for i in range(len(lista_tropas_pais_j)):   
+
+    print(f'Alocar: {lista_tropas_pais_j[0]} ({lista_nbloco_tropa_pais_j[0]} blocos)')
+
+    print(f'Proximos: {", ".join(lista_tropas_pais_j)}')
+
+    pode = False
+
+    while not pode:
+
+        coluna = input("Informe a Letra:")
+        if coluna not in ALFABETO and coluna not in ALFABETO.lower():
+            print('Coluna Inválida! Tente Novamente')
+            continue
+
+
+        coluna_i = ALFABETO.index(coluna.upper())  
+
+        linha = int(input("Informe a Linha:")) - 1
+        if linha not in [0, 1, 2, 3, 4,5, 6, 7, 8, 9,]:
+            print('Linha Inválida! Tente Novamente')
+            continue
+
+
+        orientacao = input("Informe a Orientação [v|h]:")
+        if orientacao not in ['v', 'V', 'h', 'H']:
+            print('Orientação Inválida! Tente Novamente')
+            continue
+
+        pode = posicao_suporta(mapa_j, lista_nbloco_tropa_pais_j[0], linha, coluna_i, orientacao)
+
+
+
+    if orientacao == "v":
+        for i in range(lista_nbloco_tropa_pais_j[0]):
+            mapa_j[linha+i][coluna_i] = 'N'
+
+    elif orientacao == "h":
+        for j in range(lista_nbloco_tropa_pais_j[0]):
+            mapa_j[linha][coluna_i+j] = 'N'
+
+    #Cria-se essa lista para entregar à função uma lista com o número de blocos que a peça ocupa
+    lista_nbloco_tropa_pais_c_trans_lista = []
+    lista_nbloco_tropa_pais_c_trans_lista.append(lista_nbloco_tropa_pais_c[i])
+
+
+    print(print_mapa(mapa_c, mapa_j))
+
+    aloca_navios(mapa_c_real, lista_nbloco_tropa_pais_c_trans_lista)
+
+    #Retira-se, da lista de tropas e blocos, a peça que fora alocada
+    lista_tropas_pais_j.pop(0)
+    lista_nbloco_tropa_pais_j.pop(0)
+
