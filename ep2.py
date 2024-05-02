@@ -455,3 +455,38 @@ while not acabou:
     #Substitui-se no mapa visível para o jogador, se o tiro acertou ou não algum navio
     substitui_para_mapa(mapa_c, linha, coluna_i, tiro_jogador)
 
+    #Printa-se as coordenadas dos tiros do jogador e do computador
+    print(f'Jogador   ----->>>>> {coluna}{linha+1}       {tiro_jogador}!'
+          "\n ''")
+    print(f'Computador   ----->>>>> {coluna_comp}{linha_comp+1}       {tiro_comp}!')   
+
+    #Verifica-se se algum dos jogadores teve todos os navios afundados e quebra-se o loop
+    if foi_derrotado(mapa_j, mapa_c_real) == "Acabou para computador":
+        acabou = True  
+
+    elif foi_derrotado(mapa_j, mapa_c_real) == "Acabou para jogador":
+        acabou = True
+
+    #Código para o uso da função "foi_derrotado" como pedido
+    #x = 0
+    #if foi_derrotado(mapa_j):
+    #    x = 1
+    #    acabou = True
+    
+    #elif foi_derrotado(mapa_j):
+    #    acabou = True
+
+#Anuncia se o jogador perdeu ou ganhou o jogo!
+if foi_derrotado(mapa_j, mapa_c_real) == "Acabou para computador":
+    print ("Parabéns! você ganhou!")
+
+elif foi_derrotado(mapa_j, mapa_c_real) == "Acabou para jogador":
+    print("Você perdeu!")
+
+#Anuncia se o jogador perdeu ou ganhou
+# if x == 1:
+#     print("Você perdeu!")
+
+# else:
+#     print(" Parabéns, você ganhou!")
+
