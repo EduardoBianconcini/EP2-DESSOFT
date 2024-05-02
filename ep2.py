@@ -354,11 +354,11 @@ for i in range(len(lista_tropas_pais_j)):
 
         coluna_i = ALFABETO.index(coluna.upper())  
 
-        linha = int(input("Informe a Linha:")) - 1
-        if linha not in [0, 1, 2, 3, 4,5, 6, 7, 8, 9,]:
+        linha = input("Informe a Linha:")
+        if not linha.isdigit() or not (1 <= int(linha) <= 10):
             print('Linha Inválida! Tente Novamente')
             continue
-
+        linha = int(linha) - 1  
 
         orientacao = input("Informe a Orientação [v|h]:")
         if orientacao not in ['v', 'V', 'h', 'H']:
@@ -427,11 +427,12 @@ while not acabou:
 
         coluna_i = ALFABETO.index(coluna.upper())  
 
-        linha = int(input("Informe a Linha:")) - 1
-        if linha not in [0, 1, 2, 3, 4,5, 6, 7, 8, 9,]:
+        linha = input("Informe a Linha:")
+        if not linha.isdigit() or not (1 <= int(linha) <= 10):
             print('Linha Inválida! Tente Novamente')
             continue
-
+        linha = int(linha) - 1  
+        
         foi = True
 
     #Escolhe-se, aleatoriamente, as coordenadas do tiro do computador
